@@ -1,6 +1,4 @@
 <x-guest-layout>
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
     <div class="mb-10">
         <h2 class="text-3xl font-bold text-gray-900">Welcome Back</h2>
         <p class="text-gray-500 mt-2">Enter your details to sign in.</p>
@@ -41,11 +39,9 @@
             @endif
         </div>
 
-        <div class="flex items-center justify-end">
-            <button type="submit" class="w-full px-8 py-3 bg-slate-800 hover:bg-slate-900 text-white rounded font-semibold shadow-lg transition">
-                Sign In
-            </button>
-        </div>
+        <button type="submit" class="w-full px-8 py-3 bg-slate-800 hover:bg-slate-900 text-white rounded-lg font-medium shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
+            Sign In
+        </button>
         
         <div class="mt-6 text-center">
              <span class="text-gray-500 text-sm">Don't have an account?</span>

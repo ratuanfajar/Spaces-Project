@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FocusController;
 use App\Http\Controllers\TodoController;
+use App\Http\Controllers\CalendarController;
 
 Route::get('/', function () {
     return redirect()->route('dashboard');
@@ -23,6 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/todo', [TodoController::class, 'store'])->name('todo.store');
     Route::patch('/todo/{todo}', [TodoController::class, 'update'])->name('todo.update');
     Route::delete('/todo/{todo}', [TodoController::class, 'destroy'])->name('todo.destroy');
+    Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar');
 });
 
 require __DIR__.'/auth.php';

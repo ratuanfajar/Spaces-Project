@@ -18,6 +18,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Fitur Focus
     Route::get('/focus', [FocusController::class, 'index'])->name('focus');
     Route::post('/focus/save', [FocusController::class, 'store'])->name('focus.store');
     Route::get('/todo', [TodoController::class, 'index'])->name('todo');

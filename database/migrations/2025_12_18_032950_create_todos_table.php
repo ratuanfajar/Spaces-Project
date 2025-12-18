@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->enum('status', ['todo', 'doing', 'done'])->default('todo');
             $table->integer('order')->default(0);
+            $table->date('due_date')->nullable();
             $table->timestamp('completed_at')->nullable();
             $table->timestamps();
         });

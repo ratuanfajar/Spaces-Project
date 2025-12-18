@@ -3,7 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FocusController;
-use App\Http\Controllers\NoteController;
+use App\Http\Controllers\TodoController;
+use App\Http\Controllers\CalendarController;
 
 Route::get('/', function () {
     return redirect()->route('dashboard');
@@ -21,12 +22,11 @@ Route::middleware('auth')->group(function () {
     // Fitur Focus
     Route::get('/focus', [FocusController::class, 'index'])->name('focus');
     Route::post('/focus/save', [FocusController::class, 'store'])->name('focus.store');
-
-    // Fitur Notes
-    Route::get('/notes', [NoteController::class, 'index'])->name('notes.index');
-    Route::post('/notes', [NoteController::class, 'store'])->name('notes.store');
-    Route::put('/notes/{note}', [NoteController::class, 'update'])->name('notes.update');
-    Route::delete('/notes/{note}', [NoteController::class, 'destroy'])->name('notes.destroy');
+    Route::get('/todo', [TodoController::class, 'index'])->name('todo');
+    Route::post('/todo', [TodoController::class, 'store'])->name('todo.store');
+    Route::patch('/todo/{todo}', [TodoController::class, 'update'])->name('todo.update');
+    Route::delete('/todo/{todo}', [TodoController::class, 'destroy'])->name('todo.destroy');
+    Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar');
 });
 
 require __DIR__.'/auth.php';

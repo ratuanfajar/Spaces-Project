@@ -40,7 +40,7 @@ class NoteController extends Controller
 
         Note::create($data);
 
-        return redirect()->route('notes.index')->with('success', 'Note created successfully!');
+        return redirect()->route('notes')->with('success', 'Note created successfully!');
     }
 
     // --- TAMBAHKAN METHOD UPDATE INI ---
@@ -77,7 +77,7 @@ class NoteController extends Controller
         // 5. Update Database
         $note->update($data);
 
-        return redirect()->route('notes.index')->with('success', 'Note updated successfully!');
+        return redirect()->route('notes')->with('success', 'Note updated successfully!');
     }
 
     public function destroy(Note $note)
@@ -92,6 +92,6 @@ class NoteController extends Controller
 
         $note->delete();
 
-        return redirect()->route('notes.index')->with('success', 'Note deleted!');
+        return redirect()->route('notes')->with('success', 'Note deleted!');
     }
 }

@@ -19,10 +19,10 @@ class DashboardController extends Controller
         // Focus Statistics
         $focusSessions = FocusSession::where('user_id', $userId)->get();
         $totalFocusSessions = $focusSessions->count();
-        $totalFocusTime = $focusSessions->sum('duration'); // in seconds
+        $totalFocusTime = $focusSessions->sum('duration') * 60; // duration is in minutes, convert to seconds for gmdate()
         $todayFocusTime = FocusSession::where('user_id', $userId)
             ->whereDate('created_at', today())
-            ->sum('duration');
+            ->sum('duration') * 60; // duration is in minutes, convert to seconds for gmdate()
         
         // Todo Statistics
         $todos = Todo::where('user_id', $userId);
@@ -71,10 +71,10 @@ class DashboardController extends Controller
             $date = now()->subDays($i);
             $duration = FocusSession::where('user_id', $userId)
                 ->whereDate('created_at', $date)
-                ->sum('duration');
+                ->sum('duration'); // duration is already in minutes
             $weeklyFocusData[] = [
                 'date' => $date->format('D'),
-                'minutes' => round($duration / 60)
+                'minutes' => $duration // no need to divide, already in minutes
             ];
         }
         

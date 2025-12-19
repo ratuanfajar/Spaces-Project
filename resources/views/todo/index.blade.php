@@ -4,6 +4,7 @@
         <div class="flex justify-between items-end">
             <div>
                 <h2 class="text-3xl font-bold text-white">To Do List</h2>
+                <p class="text-slate-400 mt-1">Organize and manage your tasks efficiently</p>
             </div>
         </div>
 

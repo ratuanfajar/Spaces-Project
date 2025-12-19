@@ -17,19 +17,17 @@ class DemoDataSeeder extends Seeder
      */
     public function run(): void
     {
-        // Get or create demo user
         $user = User::first();
         
         if (!$user) {
             $user = User::create([
-                'name' => 'Demo User',
-                'email' => 'demo@spaces.test',
+                'name' => 'Rafly Rayhansyah',
+                'email' => 'rafly@gmail.com',
                 'password' => bcrypt('password'),
                 'email_verified_at' => now(),
             ]);
         }
 
-        // Create Focus Sessions for the past week
         $focusSessions = [
             ['date' => Carbon::now()->subDays(6), 'minutes' => 45, 'mode' => 'focus', 'task' => 'Project Documentation'],
             ['date' => Carbon::now()->subDays(6), 'minutes' => 30, 'mode' => 'focus', 'task' => 'Code Review'],
@@ -57,7 +55,6 @@ class DemoDataSeeder extends Seeder
             ]);
         }
 
-        // Create Todos with various statuses
         $todos = [
             ['title' => 'Complete project documentation', 'status' => 'done', 'due_date' => Carbon::now()->subDays(2)],
             ['title' => 'Review pull requests', 'status' => 'done', 'due_date' => Carbon::now()->subDays(1)],
@@ -82,7 +79,6 @@ class DemoDataSeeder extends Seeder
             ]);
         }
 
-        // Create Calendar Events
         $events = [
             [
                 'title' => 'Team Standup',
@@ -153,7 +149,6 @@ class DemoDataSeeder extends Seeder
             ]);
         }
 
-        // Create Notes
         $notes = [
             [
                 'title' => 'Meeting Notes - Sprint Planning',
@@ -188,12 +183,5 @@ class DemoDataSeeder extends Seeder
                 'content' => $note['content'],
             ]);
         }
-
-        $this->command->info('✅ Demo data seeded successfully!');
-        $this->command->info('📊 Created:');
-        $this->command->info('   - ' . count($focusSessions) . ' Focus Sessions');
-        $this->command->info('   - ' . count($todos) . ' Todos');
-        $this->command->info('   - ' . count($events) . ' Calendar Events');
-        $this->command->info('   - ' . count($notes) . ' Notes');
     }
 }

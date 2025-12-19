@@ -29,6 +29,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/todo/{todo}', [TodoController::class, 'destroy'])->name('todo.destroy');
 
     Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar');
+    Route::get('/calendar/events', [CalendarController::class, 'getEvents'])->name('calendar.events');
+    Route::post('/calendar', [CalendarController::class, 'store'])->name('calendar.store');
+    Route::patch('/calendar/{event}', [CalendarController::class, 'update'])->name('calendar.update');
+    Route::delete('/calendar/{event}', [CalendarController::class, 'destroy'])->name('calendar.destroy');
+    Route::post('/calendar/import-todos', [CalendarController::class, 'importFromTodo'])->name('calendar.import-todos');
 
     Route::get('/notes', [NoteController::class, 'index'])->name('notes');
     Route::post('/notes', [NoteController::class, 'store'])->name('notes.store');

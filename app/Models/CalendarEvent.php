@@ -4,23 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class Todo extends Model
+class CalendarEvent extends Model
 {
     protected $fillable = [
         'user_id',
         'title',
         'description',
-        'status',
-        'order',
-        'due_date',
-        'completed_at'
+        'type',
+        'start_time',
+        'end_time',
+        'location',
+        'color',
+        'guests',
+        'todo_id'
     ];
 
     protected $casts = [
-        'due_date' => 'date',
-        'completed_at' => 'datetime',
+        'guests' => 'array'
     ];
 
     public function user(): BelongsTo
@@ -28,8 +29,8 @@ class Todo extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function calendarEvent(): HasOne
+    public function todo(): BelongsTo
     {
-        return $this->hasOne(CalendarEvent::class);
+        return $this->belongsTo(Todo::class);
     }
 }
